@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  drupal:
+    image: drupal:8.8.2
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles       
+      - drupal-sites:/var/www/html/sites      
+      - drupal-themes:/var/www/html/themes
+  postgres:
+    # in drupal installation process should be used postgres (service_name) instead of localhost
+    image: postgres:12.1
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypass
+      - POSTGRES_DB=mydb
+
+# https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference
+volumes:
+  # used in drupal service
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
