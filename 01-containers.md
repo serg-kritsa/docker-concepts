@@ -1,26 +1,50 @@
 # Creating and Using Containers
 
-## Check Our Docker Install and Config
+## Check our docker config
 docker version
-docker info
+## Display system-wide information
+(OLD SYNTAX)    docker info           
+docker system info
+## Show docker disk usage (images, containers, local volumes and build cache)
+docker system df
 
+### Remove unused containers and local volumes
+(OLD SYNTAX)    docker prune
+docker system prune --help
+docker system prune
+    y   to confirm 
+### Remove unused data
+docker system prune -a
+    -a          Remove all unused images not just dangling ones
+    -f, --force Do not prompt for confirmation
+### Clean up just "dangling" images
+docker image prune
+### Remove all not used images
+docker image prune -a
+    -a, --all       Remove all unused images not just dangling ones
+    -f, --force     Do not prompt for confirmation
 ## Getting help about a container command
 docker container --help
-## Starting a container (Nginx Web Server) (not recommended)
+## Starting a container (not recommended)
 docker container run --publish 80:80 nginx
-## Starting a container (Nginx Web Server) in the background
+## Starting a container in the background
 docker container run --publish 80:80 --detach nginx
-## Starting a container (Nginx Web Server) in the background w/ given name
-docker container run -p 80:80 -d --name proxy nginx
-    docker container run --publish 80:80 --detach --name webhost nginx
+(OLD SYNTAX)    docker container run --publish 80:80 --detach nginx
+## Starting a container in the background w/ given name
+docker container run -p 80:80 -d --name webhost nginx
+    -p, --publish list  Publish a container's port(s) to the host
+    -d, --detach        Run container in background and print container ID
+    --name string       Assign a name to the container                                   
 ## Show default server home page in the run containers
 curl localhost
 ## Show all run containers
+(OLD SYNTAX)    docker ps           
 docker container ls
-    docker ps           (OLD SYNTAX)
+    -q  show CONTAINER_ID only 
 ## Show all containers
+(OLD SYNTAX)    docker ps -a           
 docker container ls -a
-    docker ps -a           (OLD SYNTAX)
+    -a  all
 ## Stopping a container w/ given id
 docker container stop ###
 ## Stopping a container w/ given name
