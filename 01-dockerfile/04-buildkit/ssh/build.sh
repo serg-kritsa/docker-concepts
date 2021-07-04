@@ -1,0 +1,2 @@
+
+docker build --ssh default .
