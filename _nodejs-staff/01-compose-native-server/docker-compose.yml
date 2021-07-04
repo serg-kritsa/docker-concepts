@@ -1,0 +1,9 @@
+version: '2.0'
+
+services:
+  web:
+    image: native-server
+    build: .
+    ports:
+      - "80:3000"
+

@@ -1,0 +1,17 @@
+version: '2.4'
+
+services:
+  express:
+    build: .
+    # to override if uncommented
+    # # for development in Linux
+    # command: /app/node_modules/.bin/nodemon ./bin/www
+    # # for development in Windows
+    command: /app/node_modules/.bin/nodemon -L ./bin/www
+    ports:
+      - 80:3000
+    volumes:
+      - ./src:/app
+    environment:
+      - NODE_ENV=development
+

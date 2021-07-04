@@ -1,0 +1,11 @@
+version: '2.2'
+
+services:
+  web:
+    image: init-injected
+    # https://docs.docker.com/compose/compose-file/compose-file-v2/#init
+    init: true
+    build: .
+    ports:
+      - "80:3000"
+
