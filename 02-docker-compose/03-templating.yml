@@ -1,0 +1,19 @@
+# a new section starting with an x-, which is the template, that you can then name with a preceding & and call it from anywhere in your Compose file with * and the name. 
+
+# Once you start to use microservices and have hundreds or more lines in your Compose file, this will likely save you considerable time and ensure consistency of options throughout.
+
+version: '3.4'
+ 
+x-logging: 
+  &my-logging
+    options: 
+      max-size: '1m' 
+      max-file: '5'
+ 
+services: 
+  ghost: 
+    image: ghost 
+    logging: *my-logging 
+  nginx: 
+    image: nginx 
+    logging: *my-logging 

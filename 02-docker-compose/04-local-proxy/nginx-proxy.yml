@@ -1,0 +1,25 @@
+version: '2.4'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+
+  nginx:
+    image: nginx
+    environment:
+      - VIRTUAL_HOST=nginx.localhost
+
+  ghost:
+  # https://hub.docker.com/_/ghost/
+  # docker run -d --name some-ghost -e url=http://localhost:3001 -p 3001:2368 ghost
+    image: ghost
+    ports:
+      - "3001:2368"
+    environment:
+      - VIRTUAL_HOST=ghost.localhost
+      - url=http://ghost.localhost:3001
+

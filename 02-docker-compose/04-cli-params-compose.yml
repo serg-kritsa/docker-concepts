@@ -1,0 +1,14 @@
+# Steps:
+# cd app1 
+#   GHOST_VERSION=2 GHOST_PORT=8080 docker-compose up
+#     docker container ls 
+#       app1_ghost_1 running ghost:2 on port 8080 
+#   GHOST_VERSION=1 GHOST_PORT=9090 docker-compose -p app2 up
+#     docker container ls
+#       app1_ghost_1 running ghost:2 on port 8080 
+#       app2_ghost_1 running ghost:1 on port 9090 
+version: '2'
+services: 
+  ghost: 
+    image: ghost:${GHOST_VERSION} 
+    ports: ${GHOST_PORT}:2368 
