@@ -53,6 +53,7 @@ RUN rm -rf ./tests && rm -rf ./node_modules
 
 # prod stage
 FROM base as prod
+# `COPY --from` to get it into other stages
 COPY --from=pre-prod /app /app
 HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
 USER node
