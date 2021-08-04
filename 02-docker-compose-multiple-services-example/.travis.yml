@@ -1,0 +1,24 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t sergkritsa/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true sergkritsa/react-test npm test
+
+after_success:
+  - docker build -t sergkritsa/multi-client ./client
+  - docker build -t sergkritsa/multi-nginx ./nginx
+  - docker build -t sergkritsa/multi-server ./server
+  - docker build -t sergkritsa/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push sergkritsa/multi-client
+  - docker push sergkritsa/multi-nginx
+  - docker push sergkritsa/multi-server
+  - docker push sergkritsa/multi-worker
