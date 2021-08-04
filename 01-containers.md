@@ -93,6 +93,9 @@ docker container start -ai proxy
     # exit
 ## Executing a Shell Command Inside RUNNING Container
 docker container exec -it proxy bash
+### Executing a Shell Command Inside RUNNING Container. Redis example from CLI
+(1st terminal) docker container run --name myredis redis
+(2nd terminal) docker container exec -it --name myredis redis-cli
 
 ## Downloading an Image
 docker pull nginx
