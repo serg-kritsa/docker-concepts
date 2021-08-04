@@ -134,3 +134,18 @@ Elastic Beanstalk >
         PGHOST=rdb-instance-endpoint-ip-addr
         PGDATABASE=fibvalues
         
+## Cleaning up resources
+Elastic Beanstalk > 
++'Application' in the left sidebar >
+    +'multi-docker' row > +'Actions' > +'Delete Application'
+RDS > 
++'Databases' in the left sidebar >
+    +'multi-docker-postgres' row > +'Actions' > +'Delete'
+    not-ticked'Create final snapshot?'
+    ticked'I acknowledge that upon instance deletion, automated backups, including system snapshots and point-in-time recovery, will no longer be available.'
+ElastiCache > 
++'Redis' in the left sidebar >
+    +'multi-docker-redis' row > +'Actions' > +'Delete'
+VPS > 
++'Security Groups' in the left sidebar >
+    + row > +'Actions' > +'Delete'
