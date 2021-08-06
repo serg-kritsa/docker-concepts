@@ -5,3 +5,10 @@ kubectl get services
 
 ## get deployment log
 kubectl logs deployment_name
+
+## persistent volume claim. slice of hard drive by default
+kubectl get storageclass
+kubectl describe storageclass
+[https://kubernates.io/docs/concepts/storage/storage-classes/#provisioner]
+kubectl get pv
+kubectl get pvc
