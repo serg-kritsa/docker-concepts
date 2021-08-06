@@ -2,3 +2,6 @@
 kubectl apply -f k8s
 kubectl get deployments
 kubectl get services
+
+## get deployment log
+kubectl logs deployment_name
