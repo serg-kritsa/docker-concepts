@@ -27,9 +27,10 @@ docker container run -d --name mysql3 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysq
 ### Creating volume
 docker volume create --help
 
-#### Windows
-$(pwd)      it works!
+#### Windows powershell
 docker container run -d --name vnginx -p 80:80 -v ${pwd}:/usr/share/nginx/html nginx
+#### Windows cmd
+docker container run -d --name vnginx -p 80:80 -v %cd%:/usr/share/nginx/html nginx
 #### Full path in Windows
 docker container run -d --name vnginx -p 80:80 -v C:\Users\user\Desktop\cookbooks\docker:/usr/share/nginx/html nginx
 docker container run -d --name vnginx -p 80:80 -v //c/Users/user/Desktop/cookbooks/docker:/usr/share/nginx/html nginx
